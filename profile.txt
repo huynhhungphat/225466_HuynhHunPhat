@@ -1,2 +1,3 @@
 Name: Huỳnh Hùng Phát
 Interests: Coding, Design
+Skills: HTML, CSS, JavaScript
