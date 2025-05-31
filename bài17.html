@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng Ký</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      width: 400px;
+      margin: auto;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      width: 40px;
+      height: 40px;
+      background-color: #d4e157;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      flex: 1;
+      padding: 6px;
+    }
+
+    .radio-group {
+      margin-left: 50px;
+    }
+
+    .radio-group label {
+      margin-right: 10px;
+    }
+
+    .form-actions {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .form-actions input {
+      padding: 5px 15px;
+      margin: 5px;
+    }
+
+    .terms {
+      font-size: 14px;
+      margin-left: 50px;
+    }
+
+    .terms a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="
+        color: deeppink;
+        text-align: center;">ĐĂNG KÝ</h2>
+
+  <div class="form-container">
+    <form name="registerForm" onsubmit="return validateForm();">
+
+      <div class="form-group">
+        <label>📧</label>
+        <input type="text" name="email" placeholder="Vui lòng nhập email">
+      </div>
+
+      <div class="form-group">
+        <label>🔑</label>
+        <input type="password" name="password" placeholder="Vui lòng nhập mật khẩu">
+      </div>
+
+      <div class="form-group">
+        <label>🔑</label>
+        <input type="password" name="confirmPassword" placeholder="Vui lòng nhập lại mật khẩu">
+      </div>
+
+      <div class="form-group">
+        <label>👥</label>
+        <div class="radio-group">
+          <label><input type="radio" name="plan" value="Bạc" checked> Bạc</label>
+          <label><input type="radio" name="plan" value="Vàng"> Vàng</label>
+          <label><input type="radio" name="plan" value="Bạch Kim"> Bạch Kim</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>📁</label>
+        <input type="file" name="fileUpload">
+      </div>
+
+      <div class="terms">
+        Thông qua việc tạo tài khoản, bạn đồng ý với
+        <a href="#">Điều khoản & Quyền riêng tư của chúng tôi</a>.
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Đăng Ký">
+        <input type="reset" value="Hủy">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var f = document.forms['registerForm'];
+      var email = f.email.value.trim();
+      var password = f.password.value;
+      var confirm = f.confirmPassword.value;
+
+      var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+      if (!emailReg.test(email)) {
+        alert("Email không hợp lệ.");
+        f.email.focus();
+        return false;
+      }
+
+      if (password.length < 8) {
+        alert("Mật khẩu phải có ít nhất 8 ký tự.");
+        f.password.focus();
+        return false;
+      }
+
+      if (password !== confirm) {
+        alert("Mật khẩu và Nhập lại mật khẩu phải giống nhau.");
+        f.confirmPassword.focus();
+        return false;
+      }
+
+      alert("Đăng ký thành công!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>
